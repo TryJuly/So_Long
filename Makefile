@@ -6,6 +6,8 @@ NAME = so_long
 CC = gcc
 FLAGS = -Wall -Wextra -Werror -g
 
+EXTRA = -Lmlx_linux -L${MINILIBX} -Imlz_linux -lXext -lX11 #-lm -lz
+
 SRCS = main.c
 
 INCLUDES = so_long.h
@@ -13,15 +15,20 @@ INCLUDES = so_long.h
 LIBFT = ./libft/
 LIBFT_A= ./libft.a
 
+MINILIBX = ./minilibx-linux
+MINILIBX_A = ./libmlx.a
+
+LIB = ${MINILIBX_A} ${LIBFT_A}
+
 OBJS = ${addprefix ${OBJ_DIR}/,${SRCS:.c=.o}}
 OBJ_DIR = objets
 #################################################################################################################
 #                                           RULES COMPILATION                                                   #
 #################################################################################################################
-all: ${LIBFT_A} ${NAME}
+all: ${LIBFT_A} ${MINILIBX_A} ${NAME}
 
 ${NAME}: ${OBJS}
-	${CC} ${FLAGS} ${OBJS} ${LIBFT_A} -I ${INCLUDES} -o ${NAME}
+	${CC} ${FLAGS} ${OBJS} ${LIB} ${EXTRA} -I ${INCLUDES} -o ${NAME}
 
 ${OBJ_DIR}/%.o: %.c ${INCLUDES}
 	@mkdir -p ${OBJ_DIR}
@@ -30,21 +37,32 @@ ${OBJ_DIR}/%.o: %.c ${INCLUDES}
 ${LIBFT_A}:
 	@make -C ${LIBFT}
 	@cd ${LIBFT} && mv ${LIBFT_A} ..
+
+${MINILIBX_A}:
+	@make -C ${MINILIBX}
+	@cd ${MINILIBX} && mv ${MINILIBX_A} ..
 #################################################################################################################
 #                                           RULES CLEAN                                                         #
 #################################################################################################################
 clean:
 	rm -rf ${OBJ_DIR}/ ${OBJS}
+
+clean_lib:
 	@make clean -C ${LIBFT}
+	@make clean -C ${MINILIBX}
 
 fclean: clean
 	rm -rf ${NAME}
+
+fclean_lib: clean_lib
 	@make fclean -C ${LIBFT}
 	@rm -rf ${LIBFT_A}
+	@make clean -C ${MINILIBX}
+	@rm -rf ${MINILIBX_A}
 
-re: fclean all
+re: fclean fclean_lib all
 #################################################################################################################
 #                                           NO RELINK                                                           #
 #################################################################################################################
 
-.PHONY: all clean fclean re libft
+.PHONY: all clean fclean re clean_lib fclean_lib

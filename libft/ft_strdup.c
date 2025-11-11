@@ -6,7 +6,7 @@
 /*   By: strieste <strieste@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 07:49:55 by strieste          #+#    #+#             */
-/*   Updated: 2025/10/02 07:49:57 by strieste         ###   ########.fr       */
+/*   Updated: 2025/11/11 09:59:17 by strieste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,22 @@
 
 char	*ft_strdup(const char *s)
 {
-	char	*p_str;
-	size_t	count;
+	char	*dup;
+	size_t	len;
+	size_t	i;
 
-	count = ft_strlen(s);
-	p_str = malloc((count + 1) * sizeof(char));
-	if (!p_str)
-		return ((void *) 0);
-	count = 0;
-	while (s[count])
+	if (!s)
+		return (NULL);
+	len = ft_strlen(s);
+	dup = malloc((len + 1) * sizeof(char));
+	if (!dup)
+		return (NULL);
+	i = 0;
+	while (s[i])
 	{
-		p_str[count] = s[count];
-		count++;
+		dup[i] = s[i];
+		i++;
 	}
-	p_str[count] = '\0';
-	return (p_str);
+	dup[i] = '\0';
+	return (dup);
 }

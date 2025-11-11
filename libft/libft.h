@@ -6,18 +6,24 @@
 /*   By: strieste <strieste@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 07:51:25 by strieste          #+#    #+#             */
-/*   Updated: 2025/11/06 09:55:26 by strieste         ###   ########.fr       */
+/*   Updated: 2025/11/11 09:59:52 by strieste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 40
+# endif
+
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdarg.h>
 # include <stddef.h>
 # include <stdint.h>
+# include <limits.h>
+# include <fcntl.h>
 
 typedef struct s_list
 {
@@ -76,5 +82,9 @@ int		ft_printf_char(va_list *arg, char c);
 int		ft_printf_hexa(va_list *arg, char c);
 int		ft_printf_number(va_list *arg, char c);
 int		ft_printf_void(va_list *arg );
+
+/*				GET_NEXT_LINE		*/
+
+char	*get_next_line(int fd);
 
 #endif

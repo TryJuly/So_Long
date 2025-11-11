@@ -1,41 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   maps_checker.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: strieste <strieste@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/02 07:50:07 by strieste          #+#    #+#             */
-/*   Updated: 2025/11/11 09:59:01 by strieste         ###   ########.fr       */
+/*   Created: 2025/11/11 08:49:05 by strieste          #+#    #+#             */
+/*   Updated: 2025/11/11 10:39:14 by strieste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "so_long.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+int	is_valide_map(int ac, char **av)
+{}
+
+int	**map_to_array(char	*line)
 {
 	char	*str;
-	size_t	i;
-	size_t	j;
-
-	if (!s1 && !s2)
-		return (NULL);
-	if (!s1)
-		return (ft_strdup(s2));
-	if (!s2)
-		return (ft_strdup(s1));
-	str = malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
-	if (!str)
-		return (NULL);
-	i = 0;
-	while (s1[i])
+	size_t	count;
+	
+	while (str = get_next_line(line) != NULL)
 	{
-		str[i] = s1[i];
-		i++;
+		count = 0;
+		while (str[count])
+		{
+			
+		}
 	}
-	j = 0;
-	while (s2[j])
-		str[i++] = s2[j++];
-	str[i] = '\0';
-	return (str);
 }
