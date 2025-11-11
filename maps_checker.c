@@ -6,7 +6,7 @@
 /*   By: strieste <strieste@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 08:49:05 by strieste          #+#    #+#             */
-/*   Updated: 2025/11/11 14:14:35 by strieste         ###   ########.fr       */
+/*   Updated: 2025/11/11 14:17:23 by strieste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int	wall_checker(char **map)
 	max_x = ft_strlen(map[len]) - 1;
 	while (map[max_y] != 0)
 		max_y++;
+	max_y--;
 	while (len < max_y)
 	{
 		if (map[len][count] != '1')
