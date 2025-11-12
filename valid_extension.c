@@ -1,36 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   valid_extension.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: strieste <strieste@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/10 11:59:51 by strieste          #+#    #+#             */
-/*   Updated: 2025/11/12 14:36:06 by strieste         ###   ########.fr       */
+/*   Created: 2025/11/12 07:48:27 by strieste          #+#    #+#             */
+/*   Updated: 2025/11/12 14:33:49 by strieste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-#include "minilibx-linux/mlx.h"
 
-int	main(int ac, char **av)
+int	valid_extension(char *argument)
 {
-	(void)ac;
-	
-	if (!valid_extension(av[1]))
-		return (ft_printf("Error extension\n"), 0);
-	if (!is_valid_map(av[1]))
-		return (ft_printf("Error Maps\n"));
-	ft_printf("Valide\n");
-	return (0);
+	size_t	count;
+
+	count = ft_strlen(argument);
+	count--;
+	if (argument[count--] != 'r')
+		return (0);
+	if (argument[count--] != 'e')
+		return (0);
+	if (argument[count--] != 'b')
+		return (0);
+	if (argument[count] != '.')
+		return (0);
+	return (1);
 }
-
-// void	*mlx;
-	// (void)av;
-	// // void	*mlx_window;
-
-	// mlx = mlx_init();
-	// if (!mlx)
-	// 	return (0);
-	// mlx_new_window(mlx, 500, 500, "So_Long");
-	// mlx_loop(mlx);

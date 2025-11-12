@@ -8,7 +8,7 @@ FLAGS = -Wall -Wextra -Werror -g
 
 EXTRA = -Lmlx_linux -L${MINILIBX} -Imlz_linux -lXext -lX11 #-lm -lz
 
-SRCS = main.c maps_checker.c
+SRCS = main.c map_check.c map_check_v2.c valid_extension.c tool_player.c free.c
 
 INCLUDES = so_long.h
 
