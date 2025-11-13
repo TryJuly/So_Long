@@ -6,18 +6,21 @@
 /*   By: strieste <strieste@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 11:48:44 by strieste          #+#    #+#             */
-/*   Updated: 2025/11/13 10:08:37 by strieste         ###   ########.fr       */
+/*   Updated: 2025/11/13 15:15:57 by strieste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "./minilibx-linux/mlx.h"
-# include "./minilibx-linux/mlx_int.h"
+# include "./minilibx/mlx.h"
 # include "./libft/libft.h"
 # include <stdio.h>
 # include <math.h>
+# include <X11/keysym.h>
+
+# define WIDTH 1000
+# define HEIGHT 1000
 
 typedef struct s_pos_map
 {
@@ -27,19 +30,15 @@ typedef struct s_pos_map
 
 typedef struct s_data
 {
+	void	*mlx_ptr;
+	void	*mlx_win;
 	void	*img;
 	char	*addr;
 	int		bits_pixel;
 	int		length;
 	int		endian;
+	int		count;
 }			t_data;
-
-typedef struct	s_vars
-{
-	void	*mlx;
-	void	*win;
-}			t_vars;
-
 
 /*			Maps_Check.c			*/
 
@@ -65,13 +64,17 @@ t_pos_map	find_exit(char **map);
 
 /*			Tool_Mlx				*/
 
-void	pixel_put(t_data *data, int x, int y, int color);
-int		close_mlx(t_vars *vars);
+void	my_pixel_put(t_data *data, int x, int y, int color);
+int		close_mlx(t_data *vars);
+int 	mouse_handler(int mousecode, int x, int y, t_data *env);
+int 	key_handler(int keycode, t_data *env, int count);
+// int 	render(t_data *env);
 
 /*			Free/Clean				*/
 
 void	ft_free_map(char **map);
 
+void	print_screen(void);
 
 
 

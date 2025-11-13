@@ -6,16 +6,23 @@ NAME = so_long
 CC = gcc
 FLAGS = -Wall -Wextra -Werror -g
 
-EXTRA = -Lmlx_linux -L${MINILIBX} -Imlz_linux -lXext -lX11 #-lm -lz
-
-SRCS = main.c map_check.c map_check_v2.c valid_extension.c tool_player.c free.c tool_mlx.c
+SRCS = main.c map_check.c map_check_v2.c valid_extension.c tool_player.c \
+	free.c tool_mlx.c print_screen.c
  
+UNAME_S = ${shell uname -s}
+
 INCLUDES = so_long.h
+
+ifeq (${UNAME_S}, Linux)
+	EXTRA = -L${MINILIBX} -lXext -lX11 -lm -lz
+else ifeq (${UNAMSE_S}, Darwin)
+	EXTRA = -L${MINILIBX} -framework OpenGl -framework AppKit
+endif
 
 LIBFT = ./libft/
 LIBFT_A= ./libft.a
 
-MINILIBX = ./minilibx-linux
+MINILIBX = ./minilibx
 MINILIBX_A = ./libmlx.a
 
 LIB = ${MINILIBX_A} ${LIBFT_A}
