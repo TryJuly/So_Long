@@ -6,7 +6,7 @@
 /*   By: strieste <strieste@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 11:59:51 by strieste          #+#    #+#             */
-/*   Updated: 2025/11/12 14:36:06 by strieste         ###   ########.fr       */
+/*   Updated: 2025/11/13 07:54:21 by strieste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	main(int ac, char **av)
 	if (!valid_extension(av[1]))
 		return (ft_printf("Error extension\n"), 0);
 	if (!is_valid_map(av[1]))
-		return (ft_printf("Error Maps\n"));
+		return (0);
 	ft_printf("Valide\n");
 	return (0);
 }

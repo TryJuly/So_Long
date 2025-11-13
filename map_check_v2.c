@@ -6,13 +6,13 @@
 /*   By: strieste <strieste@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 08:07:25 by strieste          #+#    #+#             */
-/*   Updated: 2025/11/12 14:14:16 by strieste         ###   ########.fr       */
+/*   Updated: 2025/11/13 07:58:21 by strieste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	check_case_map(char **map);
+int	check_exit_collectible(char **map);
 
 int	check_all_case(char *av)
 {
@@ -24,7 +24,7 @@ int	check_all_case(char *av)
 		return (-1);
 	player = find_player(copy);
 	copy = flood_fill(copy, player.x, player.y);
-	if (!check_case_map(copy))
+	if (!check_exit_collectible(copy))
 		return (ft_free_map(copy), 0);
 	ft_free_map(copy);
 	return (1);
@@ -50,7 +50,7 @@ char	**flood_fill(char **map, int x, int y)
 	return (map);
 }
 
-int	check_case_map(char **map)
+int	check_exit_collectible(char **map)
 {
 	size_t	len;
 	size_t	count;
@@ -90,5 +90,33 @@ int	wall_check(char **map)
 			return (0);
 		count++;
 	}
+	return (1);
+}
+
+int	check_exit_player(char **map)
+{
+	int		player;
+	int		exit;
+	size_t	count;
+	size_t	len;
+
+	len = 0;
+	player = 0;
+	exit = 0;
+	while (map[len])
+	{
+		count = 0;
+		while (map[len][count])
+		{
+			if (map[len][count] == 'P')
+				player++;
+			if (map[len][count] == 'E')
+				exit++;
+			count++;
+		}
+		len++;
+	}
+	if (player != 1 || exit != 1)
+		return (0);
 	return (1);
 }

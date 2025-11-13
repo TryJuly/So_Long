@@ -6,7 +6,7 @@
 /*   By: strieste <strieste@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 08:49:05 by strieste          #+#    #+#             */
-/*   Updated: 2025/11/12 14:38:00 by strieste         ###   ########.fr       */
+/*   Updated: 2025/11/13 07:54:01 by strieste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,13 @@ int	is_valid_map(char *av)
 	if (!map)
 		return (-1);
 	if (!number_line(av) || !valid_size(map))
-		return (ft_free_map(map), 0);
+		return (ft_free_map(map), ft_printf("Wrong size of map\n"), 0);
 	if (!wall_check(map))
-		return (ft_free_map(map), 0);
+		return (ft_free_map(map), ft_printf("Missing Wall\n"), 0);
+	if (!check_exit_player(map))
+		return (ft_free_map(map), ft_printf("Exit or player no found\n"), 0);
 	if (!check_all_case(av))
-		return (ft_free_map(map), 0);
+		return (ft_free_map(map), ft_printf("Collectible or exit\n"), 0);
 	ft_free_map(map);
 	return (1);
 }
@@ -43,7 +45,7 @@ int	number_line(char *av)
 		return (0);
 	str = get_next_line(fd);
 	if (!str)
-		return (close(fd), -1);
+		return (close(fd), ft_printf("Error read file\n"), -1);
 	while (str)
 	{
 		count++;

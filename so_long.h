@@ -6,7 +6,7 @@
 /*   By: strieste <strieste@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 11:48:44 by strieste          #+#    #+#             */
-/*   Updated: 2025/11/12 14:33:44 by strieste         ###   ########.fr       */
+/*   Updated: 2025/11/13 07:45:31 by strieste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int		valid_size(char **map);
 int		wall_check(char **map);
 char	**flood_fill(char **map, int x, int y);
 int		check_all_case(char *av);
+int		check_exit_player(char **map);
 
 
 /*			Valid_Input.c			*/
