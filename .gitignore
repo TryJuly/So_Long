@@ -1,0 +1,13 @@
+#	Extension Files
+*.o
+*.a
+
+#	Library
+minilibx-linux
+minilibx-macos
+
+#	Executable
+so_long
+
+#	Objet directory
+objets
