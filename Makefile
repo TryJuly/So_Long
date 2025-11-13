@@ -8,8 +8,8 @@ FLAGS = -Wall -Wextra -Werror -g
 
 EXTRA = -Lmlx_linux -L${MINILIBX} -Imlz_linux -lXext -lX11 #-lm -lz
 
-SRCS = main.c map_check.c map_check_v2.c valid_extension.c tool_player.c free.c
-
+SRCS = main.c map_check.c map_check_v2.c valid_extension.c tool_player.c free.c tool_mlx.c
+ 
 INCLUDES = so_long.h
 
 LIBFT = ./libft/
