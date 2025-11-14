@@ -7,7 +7,7 @@ CC = gcc
 FLAGS = -Wall -Wextra -Werror -g
 
 SRCS = main.c map_check.c map_check_v2.c valid_extension.c tool_player.c \
-	free.c tool_mlx.c print_screen.c
+	free.c tool_mlx.c print_screen.c init_texture.c print_map.c
  
 UNAME_S = ${shell uname -s}
 

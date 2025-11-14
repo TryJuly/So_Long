@@ -6,7 +6,7 @@
 /*   By: strieste <strieste@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 08:51:18 by strieste          #+#    #+#             */
-/*   Updated: 2025/11/13 15:17:01 by strieste         ###   ########.fr       */
+/*   Updated: 2025/11/14 14:52:42 by strieste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,19 +29,19 @@ int	close_mlx(t_data *data)
 	return (0);
 }
 
-int key_handler(int keycode, t_data *env, int count)
+int key_handler(int keycode, t_data *env)
 {
     if (keycode == XK_Escape)
-        ft_printf("%d\n", count++);
-    else if (keycode == XK_a || keycode == XK_Left)
-        ft_printf("%d\n", count++);
-    else if (keycode == XK_d || keycode == XK_Right)
-        ft_printf("%d\n", count++);
-    else if (keycode == XK_s || keycode == XK_Down)
-        ft_printf("%d\n", count++);
-    else if (keycode == XK_w || keycode == XK_Up)
-        ft_printf("%d\n", count++);
-    return (count);
+        ft_printf("%d\n", env->count++);
+    else if (keycode == 65362)
+        ft_printf("%d\n", env->count++);
+    else if (keycode == 65361)
+        ft_printf("%d\n", env->count++);
+    else if (keycode == 65364)
+        ft_printf("%d\n", env->count++);
+    else if (keycode == 65363)
+        ft_printf("%d\n", env->count++);
+    return (0);
 	(void)env;
 }
 
@@ -53,31 +53,25 @@ int mouse_handler(int mousecode, int x, int y, t_data *env)
      * of the window
      */
      if (mousecode == 1)
-         ft_printf("Left Click");
-     else if (mousecode == 2)
-         ft_printf("Right Click");
-     else if (mousecode == 3)
-         ft_printf("Middle Click");
-     else if (mousecode == 4)
-         ft_printf("Scroll UP");
-     else if (mousecode == 5)
-         ft_printf("Scroll DOWN");
-     else if (mousecode == 6)
-         ft_printf("Scroll right");
-     else if (mousecode == 7)
-         ft_printf("Scroll left");
-     else
-         ft_printf("%d, X = %d Y = %d\n", mousecode, x, y);
+         ft_printf("");
+    //  else if (mousecode == 2)
+    //      ft_printf("Right Click");
+    //  else if (mousecode == 3)
+    //      ft_printf("Middle Click");
+    //  else if (mousecode == 4)
+    //      ft_printf("Scroll UP");
+    //  else if (mousecode == 5)
+    //      ft_printf("Scroll DOWN");
+    //  else
+        //  ft_printf("%d, X = %d Y = %d\n", mousecode, x, y);
 	return (0);
 	(void)env;
 	(void)x;
 	(void)y;
 }
 
-// int render(t_data *env)
-// {
-//     draw_background(env);
-//     draw_map(env);
-//     draw_player(env);
-//     draw_moves(env);
-// }
+int render(t_data *env)
+{
+    (void)env;
+    return (0);
+}

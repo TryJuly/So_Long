@@ -6,7 +6,7 @@
 /*   By: strieste <strieste@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 09:40:52 by strieste          #+#    #+#             */
-/*   Updated: 2025/11/12 11:40:45 by strieste         ###   ########.fr       */
+/*   Updated: 2025/11/14 15:32:19 by strieste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,9 @@ t_pos_map	find_exit(char **map)
 	exit.y = -1;
 	exit.x = -1;
 	return (exit);
+}
+
+void	move_player(t_data *data, int x, int y)
+{
+	if (x == 1)
 }
