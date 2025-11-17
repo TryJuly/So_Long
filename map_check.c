@@ -6,7 +6,7 @@
 /*   By: strieste <strieste@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 08:49:05 by strieste          #+#    #+#             */
-/*   Updated: 2025/11/13 07:54:01 by strieste         ###   ########.fr       */
+/*   Updated: 2025/11/17 15:00:45 by strieste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,14 @@ int	is_valid_map(char *av)
 	map = map_to_array(av);
 	if (!map)
 		return (-1);
+	if (map[0] == 0)
+		return (ft_printf("Empty file\n"), 0);
 	if (!number_line(av) || !valid_size(map))
 		return (ft_free_map(map), ft_printf("Wrong size of map\n"), 0);
 	if (!wall_check(map))
 		return (ft_free_map(map), ft_printf("Missing Wall\n"), 0);
 	if (!check_exit_player(map))
-		return (ft_free_map(map), ft_printf("Exit or player no found\n"), 0);
+		return (ft_free_map(map), ft_printf("Exit or player not found\n"), 0);
 	if (!check_all_case(av))
 		return (ft_free_map(map), ft_printf("Collectible or exit\n"), 0);
 	ft_free_map(map);
@@ -38,14 +40,14 @@ int	number_line(char *av)
 	size_t	count;
 	int		fd;
 	char	*str;
-	
+
 	count = 0;
 	fd = open(av, O_RDONLY);
 	if (fd < 0)
 		return (0);
 	str = get_next_line(fd);
 	if (!str)
-		return (close(fd), ft_printf("Error read file\n"), -1);
+		return (close(fd), -1);
 	while (str)
 	{
 		count++;
@@ -62,7 +64,7 @@ char	**map_to_array(char *av)
 	char	*str;
 	char	**map;
 	ssize_t	count;
-	
+
 	count = number_line(av);
 	map = malloc((count + 1) * sizeof(char **));
 	if (!map)
@@ -88,7 +90,7 @@ void	clean_array(char **map)
 {
 	size_t	len;
 	size_t	count;
-	
+
 	len = 0;
 	while (map[len])
 	{
@@ -106,7 +108,7 @@ int	valid_size(char **map)
 	size_t	count;
 	size_t	check_x;
 	size_t	len;
-	
+
 	len = 0;
 	check_x = ft_strlen(map[len]);
 	while (map[len])

@@ -6,7 +6,7 @@
 /*   By: strieste <strieste@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 09:30:21 by strieste          #+#    #+#             */
-/*   Updated: 2025/11/17 10:37:45 by strieste         ###   ########.fr       */
+/*   Updated: 2025/11/17 13:52:02 by strieste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ int	init_wall(t_data *data)
 	int		height;
 
 	mlx = data->mlx_ptr;
-	width = data->map_w;
-	height = data->map_h;
+	width = 64;
+	height = 64;
 	ptr = mlx_xpm_file_to_image(mlx, "./textures/w.xpm", &width, &height);
 	data->p_wall = ptr;
 	if (!data->p_wall)
@@ -37,8 +37,8 @@ int	init_ground(t_data *data)
 	int		height;
 
 	mlx = data->mlx_ptr;
-	width = data->map_w;
-	height = data->map_h;
+	width = 64;
+	height = 64;
 	ptr = mlx_xpm_file_to_image(mlx, "./textures/g.xpm", &width, &height);
 	data->p_ground = ptr;
 	if (!data->p_ground)
@@ -54,8 +54,8 @@ int	init_player(t_data *data)
 	int		height;
 
 	mlx = data->mlx_ptr;
-	width = data->map_w;
-	height = data->map_h;
+	width = 64;
+	height = 64;
 	ptr = mlx_xpm_file_to_image(mlx, "./textures/p.xpm", &width, &height);
 	data->p_player = ptr;
 	if (!data->p_player)
@@ -71,8 +71,8 @@ int	init_collectible(t_data *data)
 	int		height;
 
 	mlx = data->mlx_ptr;
-	width = data->map_w;
-	height = data->map_h;
+	width = 64;
+	height = 64;
 	ptr = mlx_xpm_file_to_image(mlx, "./textures/c.xpm", &width, &height);
 	data->p_collectible = ptr;
 	if (!data->p_collectible)
@@ -88,8 +88,8 @@ int	init_exit(t_data *data)
 	int		height;
 
 	mlx = data->mlx_ptr;
-	width = data->map_w;
-	height = data->map_h;
+	width = 64;
+	height = 64;
 	ptr = mlx_xpm_file_to_image(mlx, "./textures/e.xpm", &width, &height);
 	data->p_exit = ptr;
 	if (!data->p_exit)

@@ -6,19 +6,20 @@
 /*   By: strieste <strieste@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 08:07:25 by strieste          #+#    #+#             */
-/*   Updated: 2025/11/13 07:58:21 by strieste         ###   ########.fr       */
+/*   Updated: 2025/11/17 14:33:09 by strieste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	check_exit_collectible(char **map);
+int		check_exit_collectible(char **map);
+char	**flood_fill(char **map, int x, int y);
 
 int	check_all_case(char *av)
 {
 	char		**copy;
 	t_pos_map	player;
-	
+
 	copy = map_to_array(av);
 	if (!copy)
 		return (-1);
@@ -74,7 +75,7 @@ int	wall_check(char **map)
 {
 	size_t	count;
 	size_t	len;
-	
+
 	count = ft_strlen(map[0]) - 1;
 	len = 0;
 	while (map[len + 1] != 0)

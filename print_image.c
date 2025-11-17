@@ -6,7 +6,7 @@
 /*   By: strieste <strieste@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 08:46:13 by strieste          #+#    #+#             */
-/*   Updated: 2025/11/17 10:48:52 by strieste         ###   ########.fr       */
+/*   Updated: 2025/11/17 14:22:31 by strieste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	print_wall(t_data *data, int x, int y)
 	void	*mlx;
 	void	*win;
 	void	*image;
-	
+
 	mlx = data->mlx_ptr;
 	win = data->mlx_win;
 	image = data->p_wall;
@@ -30,7 +30,7 @@ int	print_ground(t_data *data, int x, int y)
 	void	*mlx;
 	void	*win;
 	void	*image;
-	
+
 	mlx = data->mlx_ptr;
 	win = data->mlx_win;
 	image = data->p_ground;
@@ -43,7 +43,7 @@ int	print_collectible(t_data *data, int x, int y)
 	void	*mlx;
 	void	*win;
 	void	*image;
-	
+
 	mlx = data->mlx_ptr;
 	win = data->mlx_win;
 	image = data->p_collectible;
@@ -56,7 +56,7 @@ int	print_player(t_data *data, int x, int y)
 	void	*mlx;
 	void	*win;
 	void	*image;
-	
+
 	mlx = data->mlx_ptr;
 	win = data->mlx_win;
 	image = data->p_ground;
@@ -71,7 +71,7 @@ int	print_exit(t_data *data, int x, int y)
 	void	*mlx;
 	void	*win;
 	void	*image;
-	
+
 	mlx = data->mlx_ptr;
 	win = data->mlx_win;
 	image = data->p_exit;
