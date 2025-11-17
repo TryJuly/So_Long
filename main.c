@@ -6,7 +6,7 @@
 /*   By: strieste <strieste@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 11:59:51 by strieste          #+#    #+#             */
-/*   Updated: 2025/11/14 12:42:22 by strieste         ###   ########.fr       */
+/*   Updated: 2025/11/17 13:25:27 by strieste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 int	main(int ac, char **av)
 {
 	char	**map;
-	// (void)ac;
-	// (void)av;
 	
 	if (ac != 2)
 		return (0);
@@ -27,16 +25,5 @@ int	main(int ac, char **av)
 		return (0);
 	map = map_to_array(av[ac]);
 	print_screen(map);
-	ft_printf("Valide\n");
 	return (0);
 }
-
-// void	*mlx;
-	// (void)av;
-	// // void	*mlx_window;
-
-	// mlx = mlx_init();
-	// if (!mlx)
-	// 	return (0);
-	// mlx_new_window(mlx, 500, 500, "So_Long");
-	// mlx_loop(mlx);

@@ -7,7 +7,8 @@ CC = gcc
 FLAGS = -Wall -Wextra -Werror -g
 
 SRCS = main.c map_check.c map_check_v2.c valid_extension.c tool_player.c \
-	free.c tool_mlx.c print_screen.c init_texture.c print_map.c
+	free.c tool_mlx.c print_screen.c init_texture.c print_map.c print_image.c \
+	texture.c tool_hooks.c
  
 UNAME_S = ${shell uname -s}
 
@@ -15,8 +16,8 @@ INCLUDES = so_long.h
 
 ifeq (${UNAME_S}, Linux)
 	EXTRA = -L${MINILIBX} -lXext -lX11 -lm -lz
-else ifeq (${UNAMSE_S}, Darwin)
-	EXTRA = -L${MINILIBX} -framework OpenGl -framework AppKit
+else ifeq (${UNAME_S}, Darwin)
+	EXTRA = -L${MINILIBX} -lmlx -framework OpenGl -framework AppKit
 endif
 
 LIBFT = ./libft/

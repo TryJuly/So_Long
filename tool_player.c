@@ -6,7 +6,7 @@
 /*   By: strieste <strieste@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 09:40:52 by strieste          #+#    #+#             */
-/*   Updated: 2025/11/14 15:32:19 by strieste         ###   ########.fr       */
+/*   Updated: 2025/11/17 11:53:08 by strieste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,24 @@ t_pos_map	find_exit(char **map)
 	return (exit);
 }
 
-void	move_player(t_data *data, int x, int y)
+int	find_collectible(char **map)
 {
-	if (x == 1)
+	int	y;
+	int	x;
+	int	count;
+
+	y = 0;
+	count = 0;
+	while (map[y])
+	{
+		x = 0;
+		while (map[y][x])
+		{
+			if (map[y][x] == 'C')
+			count++;
+			x++;
+		}
+		y++;
+	}
+	return (count);
 }
