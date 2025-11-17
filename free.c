@@ -6,7 +6,7 @@
 /*   By: strieste <strieste@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 13:32:47 by strieste          #+#    #+#             */
-/*   Updated: 2025/11/17 14:05:42 by strieste         ###   ########.fr       */
+/*   Updated: 2025/11/17 18:25:52 by strieste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	close_window(t_data *data)
 {
 	mlx_destroy_window(data->mlx_ptr, data->mlx_win);
 	ft_free_struct(data);
-	mlx_destroy_display(data->mlx_ptr);
+	// mlx_destroy_display(data->mlx_ptr);
 	free(data->mlx_ptr);
 	exit(1);
 	return (0);

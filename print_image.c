@@ -6,7 +6,7 @@
 /*   By: strieste <strieste@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 08:46:13 by strieste          #+#    #+#             */
-/*   Updated: 2025/11/17 14:22:31 by strieste         ###   ########.fr       */
+/*   Updated: 2025/11/17 20:41:18 by strieste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ int	print_collectible(t_data *data, int x, int y)
 
 	mlx = data->mlx_ptr;
 	win = data->mlx_win;
+	image = data->p_ground;
+	mlx_put_image_to_window(mlx, win, image, x * WIDTH, y * HEIGHT);
 	image = data->p_collectible;
 	mlx_put_image_to_window(mlx, win, image, x * WIDTH, y * HEIGHT);
 	return (1);
