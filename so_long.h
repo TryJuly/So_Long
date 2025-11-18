@@ -6,7 +6,7 @@
 /*   By: strieste <strieste@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 11:48:44 by strieste          #+#    #+#             */
-/*   Updated: 2025/11/17 18:25:21 by strieste         ###   ########.fr       */
+/*   Updated: 2025/11/18 07:36:24 by strieste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "./minilibx/mlx.h"
 # include "./libft/libft.h"
-// # include <X11/keysym.h>
+# include <X11/keysym.h>
 
 # define WIDTH 64
 # define HEIGHT 64

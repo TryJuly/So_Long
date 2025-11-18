@@ -6,7 +6,7 @@
 /*   By: strieste <strieste@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 08:51:18 by strieste          #+#    #+#             */
-/*   Updated: 2025/11/17 18:42:33 by strieste         ###   ########.fr       */
+/*   Updated: 2025/11/18 12:46:54 by strieste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	key_handler(int keycode, t_data *data)
 {
-	if (keycode == 0 || keycode == 53)
+	if (keycode == XK_Escape || keycode == 53)
 	{
 		ft_printf("The ESC pressed\n");
 		close_window(data);

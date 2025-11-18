@@ -9,6 +9,10 @@ FLAGS = -Wall -Wextra -Werror -g
 SRCS = main.c map_check.c map_check_v2.c valid_extension.c tool_player.c \
 	free.c tool_mlx.c print.c init_structure.c print_image.c \
 	texture.c tool_hooks.c
+
+SRCS_BONUS = main.c map_check.c map_check_v2.c valid_extension.c tool_player.c \
+	free.c tool_mlx.c init_structure.c print_image.c texture.c print_bonus.c \
+	tool_hooks_bonus.c
  
 UNAME_S = ${shell uname -s}
 
@@ -44,16 +48,17 @@ ${OBJ_DIR}/%.o: %.c ${INCLUDES}
 
 ${LIBFT_A}:
 	@make -C ${LIBFT}
-	@cd ${LIBFT} && mv ${LIBFT_A} ..
+	@cd ${LIBFT} && cp ${LIBFT_A} ..
 
 ${MINILIBX_A}:
 	@make -C ${MINILIBX}
-	@cd ${MINILIBX} && mv ${MINILIBX_A} ..
+	@cd ${MINILIBX} && cp ${MINILIBX_A} ..
 #################################################################################################################
 #                                           RULES CLEAN                                                         #
 #################################################################################################################
 clean:
 	rm -rf ${OBJ_DIR}/ ${OBJS}
+	rm -rf ${OBJ_DIR_BONUS}/ ${OBJS_BONUS}
 
 clean_lib:
 	@make clean -C ${LIBFT}
@@ -61,6 +66,8 @@ clean_lib:
 
 fclean: clean
 	rm -rf ${NAME}
+	rm -rf ${MINILIBX_A}
+	rm -rf ${LIBFT_A}
 
 fclean_lib: clean_lib
 	@make fclean -C ${LIBFT}
@@ -73,4 +80,21 @@ re: fclean fclean_lib all
 #                                           NO RELINK                                                           #
 #################################################################################################################
 
-.PHONY: all clean fclean re clean_lib fclean_lib
+.PHONY: all clean fclean re clean_lib fclean_lib bonus
+
+#################################################################################################################
+#                                           BONUS	                                                            #
+#################################################################################################################
+BONUS_NAME = so_long_bonus
+
+OBJS_BONUS = ${addprefix ${OBJ_DIR_BONUS}/,${SRCS_BONUS:.c=.o}}
+OBJ_DIR_BONUS = objets_bonus
+
+${OBJ_DIR_BONUS}/%.o: %.c ${INCLUDES}
+	@mkdir -p ${OBJ_DIR_BONUS}
+	${CC} ${FLAGS} -c $< -o $@
+
+${BONUS_NAME}: ${OBJS_BONUS}
+	${CC} ${FLAGS} ${OBJS_BONUS} ${LIB} ${EXTRA} -I ${INCLUDES} -o ${BONUS_NAME}
+
+bonus: ${MINILIBX_A} ${LIBFT_A} ${BONUS_NAME}

@@ -6,7 +6,7 @@
 /*   By: strieste <strieste@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 09:30:21 by strieste          #+#    #+#             */
-/*   Updated: 2025/11/17 21:24:26 by strieste         ###   ########.fr       */
+/*   Updated: 2025/11/18 13:33:25 by strieste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	init_player(t_data *data)
 	mlx = data->mlx_ptr;
 	width = 64;
 	height = 64;
-	ptr = mlx_xpm_file_to_image(mlx, "./textures/rick.xpm", &width, &height);
+	ptr = mlx_xpm_file_to_image(mlx, "./textures/Rick.xpm", &width, &height);
 	data->p_player = ptr;
 	if (!data->p_player)
 		return (0);
@@ -73,7 +73,7 @@ int	init_collectible(t_data *data)
 	mlx = data->mlx_ptr;
 	width = 64;
 	height = 64;
-	ptr = mlx_xpm_file_to_image(mlx, "./textures/mort.xpm", &width, &height);
+	ptr = mlx_xpm_file_to_image(mlx, "./textures/Morty.xpm", &width, &height);
 	data->p_collectible = ptr;
 	if (!data->p_collectible)
 		return (0);

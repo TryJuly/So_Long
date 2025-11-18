@@ -6,11 +6,15 @@
 /*   By: strieste <strieste@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 15:18:46 by strieste          #+#    #+#             */
-/*   Updated: 2025/11/17 15:19:33 by strieste         ###   ########.fr       */
+/*   Updated: 2025/11/18 15:34:39 by strieste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+int		render(t_data *data);
+void	help_function(t_data *data);
+void	help_render(t_data *data, int x, int y);
 
 void	print_screen(char **map)
 {
@@ -36,9 +40,54 @@ void	print_screen(char **map)
 		return ;
 	}
 	print_map(&data, map);
-	mlx_hook(data.mlx_win, 2, 1L << 0, key_handler, &data);
-	mlx_hook(data.mlx_win, 17, 1L << 0, close_window, &data);
-	mlx_loop(data.mlx_ptr);
+	help_function(&data);
+}
+
+void	help_function(t_data *data)
+{
+	mlx_hook(data->mlx_win, 2, 1L << 0, key_handler, data);
+	mlx_loop_hook(data->mlx_ptr, render, data);
+	mlx_hook(data->mlx_win, 17, 1L << 0, close_window, data);
+	mlx_loop(data->mlx_ptr);
+}
+
+int	render(t_data *data)
+{
+	int		x;
+	int		y;
+
+	if (!data->collectible)
+	{
+		data->exit = find_exit(data->map);
+		y = data->exit.y;
+		x = data->exit.x;
+		help_render(data, x, y);
+	}
+	return (0);
+}
+
+void	help_render(t_data *data, int x, int y)
+{
+	void	*mlx;
+	void	*win;
+	void	*ptr;
+	int		size;
+
+	size = 64;
+	mlx = data->mlx_ptr;
+	win = data->mlx_win;
+	ptr = mlx_xpm_file_to_image(mlx, "./textures/portal.xpm", &size, &size);
+	mlx_put_image_to_window(mlx, win, ptr, x * WIDTH, y * HEIGHT);
+	mlx_destroy_image(data->mlx_ptr, ptr);
+	ptr = mlx_xpm_file_to_image(mlx, "./textures/portal_1.xpm", &size, &size);
+	mlx_put_image_to_window(mlx, win, ptr, x * WIDTH, y * HEIGHT);
+	mlx_destroy_image(data->mlx_ptr, ptr);
+	ptr = mlx_xpm_file_to_image(mlx, "./textures/portal_2.xpm", &size, &size);
+	mlx_put_image_to_window(mlx, win, ptr, x * WIDTH, y * HEIGHT);
+	mlx_destroy_image(data->mlx_ptr, ptr);
+	ptr = mlx_xpm_file_to_image(mlx, "./textures/portal_3.xpm", &size, &size);
+	mlx_put_image_to_window(mlx, win, ptr, x * WIDTH, y * HEIGHT);
+	mlx_destroy_image(data->mlx_ptr, ptr);
 }
 
 int	print_map(t_data *data, char **map)

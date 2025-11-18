@@ -1,16 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tool_hooks.c                                       :+:      :+:    :+:   */
+/*   tool_hooks_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: strieste <strieste@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 10:15:04 by strieste          #+#    #+#             */
-/*   Updated: 2025/11/18 13:10:35 by strieste         ###   ########.fr       */
+/*   Updated: 2025/11/18 15:34:50 by strieste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	print_count_screen(t_data *data);
 
 int	move_up(t_data *data, int y, int x)
 {
@@ -25,6 +27,7 @@ int	move_up(t_data *data, int y, int x)
 	print_player(data, x, y);
 	data->pos_x = x;
 	data->pos_y = y;
+	print_count_screen(data);
 	ft_printf("%d\n", data->count++);
 	return (1);
 }
@@ -42,6 +45,7 @@ int	move_down(t_data *data, int y, int x)
 	print_player(data, x, y);
 	data->pos_x = x;
 	data->pos_y = y;
+	print_count_screen(data);
 	ft_printf("%d\n", data->count++);
 	return (1);
 }
@@ -59,6 +63,7 @@ int	move_right(t_data *data, int y, int x)
 	print_player(data, x, y);
 	data->pos_x = x;
 	data->pos_y = y;
+	print_count_screen(data);
 	ft_printf("%d\n", data->count++);
 	return (1);
 }
@@ -76,6 +81,17 @@ int	move_left(t_data *data, int y, int x)
 	print_player(data, x, y);
 	data->pos_x = x;
 	data->pos_y = y;
+	print_count_screen(data);
 	ft_printf("%d\n", data->count++);
 	return (1);
+}
+
+void	print_count_screen(t_data *data)
+{
+	char	*count_m;
+
+	count_m = ft_itoa(data->count++);
+	print_wall(data, 0, 0);
+	mlx_string_put(data->mlx_ptr, data->mlx_win, 32, 32, 0x00FF00, count_m);
+	free(count_m);
 }
